@@ -1,37 +1,62 @@
+<!--
+! @(#)www/text/goto.html $Revision: 1.6 $ $Date: 2005/11/27 18:16:43 $
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
 
-<!-- saved from url=(0039)http://david.tribble.com/text/goto.html -->
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+! Signed by: david@tribble.com 0x8ACE3E79
+! Created: Sun 2004-12-26 21:45 Z
+!-->
+<html>
+<head>
 
+<meta http-equiv="content-type"
+  content="text/html; charset=ISO-8859-1"></meta>
 
-
-<meta name="revision" content="1.1, 2005-11-27">
-<meta name="supersedes" content="1.0, 2005-02-26">
+<meta name="revision"
+  content="1.1, 2005-11-27"></meta>
+<meta name="supersedes"
+  content="1.0, 2005-02-26"></meta>
 <!-- Other previous revisions:
   content="0.4 Draft, 2005-01-30">
   content="0.3 Draft, 2005-01-01"
   content="0.2 Draft, 2004-12-29"
   content="0.1 Draft, 2004-12-29"
 !-->
-<meta name="title" content="Go To Statement Considered Harmful: A Retrospective">
-<meta name="author" content="David R. Tribble">
-<meta name="copyright" content="Copyright ©2005 by David R. Tribble, all rights reserved.">
-<meta name="language" content="en.usa.iso-8859-1">
-<meta name="description" content="Dijkstra&#39;s famous letter with modern annotations and commentary">
-
-<meta name="keywords" content="computer science, programming, structured programming, goto">
-<meta name="keywords" content="go to statement, jump instruction, branch instruction">
-<meta name="keywords" content="conditional clause, alternative clause, repetitive clause">
-<meta name="keywords" content="program intelligibility, program sequencing, tao of goto" "="">
-<meta name="source" content="text/goto.html">
-<meta name="voluntary content rating" content="general">
-<meta name="author-email" content="mailto:david@tribble.com">
-<meta name="author-home-page-url" content="http://david.tribble.com/">
-<meta name="author-pgp-key-url" content="http://david.tribble.com/pgpkey.htm">
-<meta name="robots" content="index, follow">
+<meta name="title"
+  content="Go To Statement Considered Harmful: A Retrospective"></meta>
+<meta name="author"
+  content="David R. Tribble"></meta>
+<meta name="copyright"
+  content="Copyright ©2005 by David R. Tribble, all rights reserved."></meta>
+<meta name="language"
+  content="en.usa.iso-8859-1"></meta>
+<meta name="description"
+  content="Dijkstra's famous letter with modern annotations and commentary">
+</meta>
+<meta name="keywords"
+  content="computer science, programming, structured programming, goto"></meta>
+<meta name="keywords"
+  content="go to statement, jump instruction, branch instruction"></meta>
+<meta name="keywords"
+  content="conditional clause, alternative clause, repetitive clause"></meta>
+<meta name="keywords"
+  content="program intelligibility, program sequencing, tao of goto""></meta>
+<meta name="source"
+  content="text/goto.html"></meta>
+<meta name="voluntary content rating"
+  content="general"></meta>
+<meta name="author-email"
+  content="mailto:david@tribble.com"></meta>
+<meta name="author-home-page-url"
+  content="http://david.tribble.com/"></meta>
+<meta name="author-pgp-key-url"
+  content="http://david.tribble.com/pgpkey.htm"></meta>
+<meta name="robots"
+  content="index, follow"></meta>
 
 <title>Go To Statement Considered Harmful: A Retrospective</title>
 
-<style>._3emE9--dark-theme .-S-tR--ff-downloader{background:rgba(30,30,30,.93);border:1px solid rgba(82,82,82,.54);box-shadow:0 4px 7px rgba(30,30,30,.55);color:#fff}._3emE9--dark-theme .-S-tR--ff-downloader ._6_Mtt--header ._2VdJW--minimize-btn{background:#3d4b52}._3emE9--dark-theme .-S-tR--ff-downloader ._6_Mtt--header ._2VdJW--minimize-btn:hover{background:#131415}._3emE9--dark-theme .-S-tR--ff-downloader ._10vpG--footer{background:rgba(30,30,30,.93)}._2mDEx--white-theme .-S-tR--ff-downloader{background:#fff;border:1px solid rgba(82,82,82,.54);box-shadow:0 4px 7px rgba(30,30,30,.55);color:#314c75}._2mDEx--white-theme .-S-tR--ff-downloader ._6_Mtt--header{font-weight:700}._2mDEx--white-theme .-S-tR--ff-downloader ._2dFLA--container ._2bWNS--notice{border:0;color:rgba(0,0,0,.88)}._2mDEx--white-theme .-S-tR--ff-downloader ._10vpG--footer{background:#fff}.-S-tR--ff-downloader{display:block;overflow:hidden;position:fixed;bottom:20px;right:7.1%;width:330px;height:180px;background:rgba(30,30,30,.93);border-radius:2px;color:#fff;z-index:99999999;border:1px solid rgba(82,82,82,.54);box-shadow:0 4px 7px rgba(30,30,30,.55);transition:.5s}.-S-tR--ff-downloader._3M7UQ--minimize{height:62px}.-S-tR--ff-downloader._3M7UQ--minimize .nxuu4--file-info,.-S-tR--ff-downloader._3M7UQ--minimize ._6_Mtt--header{display:none}.-S-tR--ff-downloader ._6_Mtt--header{padding:10px;font-size:17px;font-family:sans-serif}.-S-tR--ff-downloader ._6_Mtt--header ._2VdJW--minimize-btn{float:right;background:#f1ecec;height:20px;width:20px;text-align:center;padding:2px;margin-top:-10px;cursor:pointer}.-S-tR--ff-downloader ._6_Mtt--header ._2VdJW--minimize-btn:hover{background:#e2dede}.-S-tR--ff-downloader ._13XQ2--error{color:red;padding:10px;font-size:12px;line-height:19px}.-S-tR--ff-downloader ._2dFLA--container{position:relative;height:100%}.-S-tR--ff-downloader ._2dFLA--container .nxuu4--file-info{padding:6px 15px 0;font-family:sans-serif}.-S-tR--ff-downloader ._2dFLA--container .nxuu4--file-info div{margin-bottom:5px;width:100%;overflow:hidden}.-S-tR--ff-downloader ._2dFLA--container ._2bWNS--notice{margin-top:21px;font-size:11px}.-S-tR--ff-downloader ._10vpG--footer{width:100%;bottom:0;position:absolute;font-weight:700}.-S-tR--ff-downloader ._10vpG--footer ._2V73d--loader{animation:n0BD1--rotation 3.5s linear forwards;position:absolute;top:-120px;left:calc(50% - 35px);border-radius:50%;border:5px solid #fff;border-top-color:#a29bfe;height:70px;width:70px;display:flex;justify-content:center;align-items:center}.-S-tR--ff-downloader ._10vpG--footer ._24wjw--loading-bar{width:100%;height:18px;background:#dfe6e9;border-radius:5px}.-S-tR--ff-downloader ._10vpG--footer ._24wjw--loading-bar ._1FVu9--progress-bar{height:100%;background:#8bc34a;border-radius:5px}.-S-tR--ff-downloader ._10vpG--footer ._2KztS--status{margin-top:10px}.-S-tR--ff-downloader ._10vpG--footer ._2KztS--status ._1XilH--state{float:left;font-size:.9em;letter-spacing:1pt;text-transform:uppercase;width:100px;height:20px;position:relative}.-S-tR--ff-downloader ._10vpG--footer ._2KztS--status ._1jiaj--percentage{float:right}</style></head>
+</head>
 
 
 <!-- ----------------------------------------------------------------------- -->
@@ -45,7 +70,7 @@
  A Retrospective
 </h1>
 
-<hr width="50%">
+<hr width="50%"></hr>
 
 <h2 align="center">
  David R. Tribble <br>
@@ -53,32 +78,32 @@
 </h2>
 
 <!-- ------------------------------- -->
-<hr width="50%">
+<hr width="50%"></hr>
 
 <p>
 <bl>
- </bl></p><li>
-  <a href="http://david.tribble.com/text/goto.html#intro">       Introduction</a>
- </li><li>
-  <a href="http://david.tribble.com/text/goto.html#background">  Background</a>
- </li><li>
-  <a href="http://david.tribble.com/text/goto.html#part-1">      Part I - Dijkstra's Letter, Annotated</a>
- </li><li>
-  <a href="http://david.tribble.com/text/goto.html#part-2">      Part II - Structured Programming</a>
- </li><li>
-  <a href="http://david.tribble.com/text/goto.html#part-3">      Part III - Is Goto Still Necessary?</a>
- </li><li>
-  <a href="http://david.tribble.com/text/goto.html#conclusion">  Conclusion - The Tao of Goto</a>
- </li></font><li><font face="helvetica,arial,sans serif">
-  <a href="http://david.tribble.com/text/goto.html#references">  References</a>
-
-<p></p>
+ <li>
+  <a href="#intro">       Introduction</a>
+ <li>
+  <a href="#background">  Background</a>
+ <li>
+  <a href="#part-1">      Part I - Dijkstra's Letter, Annotated</a>
+ <li>
+  <a href="#part-2">      Part II - Structured Programming</a>
+ <li>
+  <a href="#part-3">      Part III - Is Goto Still Necessary?</a>
+ <li>
+  <a href="#conclusion">  Conclusion - The Tao of Goto</a>
+ <li>
+  <a href="#references">  References</a>
+</bl>
+</p>
 
 <p></p>
 
 
 <!-- ----------------------------------------------------------------------- -->
-<hr>
+<hr></hr>
 
 <a name="intro"></a>
 <h2> Introduction </h2>
@@ -87,7 +112,7 @@
 This is a discussion and analysis of the letter sent to
 <i>Communications of the Association for Computing Machinery</i> (CACM)
 in 1968 by <b>Edsger W. Dijkstra</b>, in which he calls for abolishing the
-<b>goto</b> statement in programming languages.
+<b>goto</b></a> statement in programming languages.
 </p>
 
 <p>
@@ -122,7 +147,7 @@ control structures.
 
 
 <!-- ----------------------------------------------------------------------- -->
-<hr>
+<hr></hr>
 
 <a name="background"></a>
 <h2> Background </h2>
@@ -159,7 +184,7 @@ expressed by David Hilbert, which was intended to codify all of mathematics in
 a complete and all-inclusive set of laws derived from nothing more than the
 building blocks of the natural numbers and the rules of simple logic and
 arithmetic.
-Alas, Kurt Gödel's Incompleteness Theorem deflated that dream, proving
+Alas, Kurt G&#246;del's Incompleteness Theorem deflated that dream, proving
 that there are mathematical truths (and untruths) that are outside the realm of
 logical provability.
 </p>
@@ -216,7 +241,7 @@ have been invented if we had been left with only the word <i>error</i>.
 </p>
 
 <!-- ----------------------------------------------------------------------- -->
-<hr>
+<hr></hr>
 
 <a name="part-1"></a>
 <h1 align="center"> Part I </h1>
@@ -231,10 +256,10 @@ perspective.
 </p>
 
 <!-- ------------------------------- -->
-<hr width="50%">
+<hr width="50%"></hr>
 
 <table cols="3" border="0">
- <tbody><tr>
+ <tr>
   <td width="20%"></td>
   <td width="55%"></td>
   <td width="25%"></td>
@@ -251,8 +276,9 @@ perspective.
 
 <p>
 Reprinted from <i>Communications of the ACM</i>, <br>
-<a href="http://www.acm.org/classics/oct95/">Vol. 11, No. 3, March 1968, pp. 147-148</a>. <br>
-Copyright ©1968, Association for Computing Machinery, Inc.
+<a href="http://www.acm.org/classics/oct95/"
+ >Vol. 11, No. 3, March 1968, pp. 147-148</a>. <br>
+Copyright &#169;1968, Association for Computing Machinery, Inc.
 </p>
 
 <!-- OMITTED [from the original]
@@ -380,7 +406,7 @@ to a series of mathematical and logical manipulations that would demonstrate
 that the code either contained errors (logic errors, constraint errors,
 invariant errors, etc.) or that it did not and thus was thus
 <i>provably correct</i>.
-As&nbsp;mentioned in the <a href="http://david.tribble.com/text/goto.html#background">Background</a> section above,
+As&nbsp;mentioned in the <a href="#background">Background</a> section above,
 computer scientists (or at least programmers) do not think about programming in
 such terms today.
 </p>
@@ -543,12 +569,12 @@ alternative clauses
 <b>else</b>&nbsp;<i>A</i><sub>2</sub>),
 choice clauses as introduced by C.&nbsp;A.&nbsp;R. Hoare
 (<b>case</b>[i]&nbsp;<b>of</b>
-(<i>A</i><sub>1</sub>, <i>A</i><sub>2</sub>, ···,
+(<i>A</i><sub>1</sub>, <i>A</i><sub>2</sub>, &#183;&#183;&#183;,
 <i>A<sub>n</sub></i>)), or conditional expressions as introduced by J. McCarthy
-(<i>B</i><sub>1</sub>&nbsp;&#8594;&nbsp;<i>E</i><sub>1</sub>,
-<i>B</i><sub>2</sub>&nbsp;&#8594;&nbsp;<i>E</i><sub>2</sub>,
-···,
-<i>B<sub>n</sub></i>&nbsp;&#8594;&nbsp;<i>E<sub>n</sub></i>),
+(<i>B</i><sub>1</sub>&nbsp;&#x2192;&nbsp;<i>E</i><sub>1</sub>,
+<i>B</i><sub>2</sub>&nbsp;&#x2192;&nbsp;<i>E</i><sub>2</sub>,
+&#183;&#183;&#183;,
+<i>B<sub>n</sub></i>&nbsp;&#x2192;&nbsp;<i>E<sub>n</sub></i>),
 the fact remains that the progress of the process remains characterized by a
 single textual index.
 </p>
@@ -585,7 +611,7 @@ programming.
 A major goal of all of this effort was to create a nomeclature that could be
 used not just for actual programming languages, but which also could be used
 directly for mathematical formulations of programming algorithms.
-As&nbsp;stated in the <a href="http://david.tribble.com/text/goto.html#background">Background</a> section above,
+As&nbsp;stated in the <a href="#background">Background</a> section above,
 this reflected a belief that programs could be expressed in a form that would
 make it possible to prove their correctness mathematically.
 </p>
@@ -1077,7 +1103,7 @@ consequences of his remark.
 <p>
 Here Dijkstra acknowledges the influences that led him to his observation about
 the dangers of goto.
-As&nbsp;noted in the <a href="http://david.tribble.com/text/goto.html#background">Background</a> section, many of the
+As&nbsp;noted in the <a href="#background">Background</a> section, many of the
 people who influenced the design of the ALGOL language were also involved in
 discussions about proper language design and correct program control flow
 structures.
@@ -1098,14 +1124,14 @@ I&nbsp;remember having read the explicit recommendation to restrict the use of
 the
 <b>go&nbsp;to</b> statement to alarm exits, but I have not been able to trace
 it; presumably, it has been made by C.&nbsp;A.&nbsp;R. Hoare.
-In&nbsp;[<a href="http://david.tribble.com/text/goto.html#WIRTH66">1</a>, Sec.&nbsp;3.2.1] Wirth and Hoare together
+In&nbsp;[<a href="#WIRTH66">1</a>, Sec.&nbsp;3.2.1] Wirth and Hoare together
 make a remark in the same direction in motivating the <b>case</b> construction:
-</p><blockquote>
+<blockquote>
  "Like the conditional, it mirrors the dynamic structure of a program more
  clearly than <b>go&nbsp;to</b> statements and switches, and it eliminates the
  need for introducing a large number of labels in the program."
 </blockquote>
-<p></p>
+</p>
 <p></p>
 </font>
   </td>
@@ -1142,7 +1168,7 @@ the clumsy use of multiple <b>if</b>s, <b>goto</b>s, and labels.
 <font color="#0000B0" face="times,times roman,serif" size="+1">
 <a name="para-14"></a>
 <p>
-In [<a href="http://david.tribble.com/text/goto.html#BOHM66">2</a>] Guiseppe Jacopini seems to have proved the
+In [<a href="#BOHM66">2</a>] Guiseppe Jacopini seems to have proved the
 (logical) superfluousness of the <b>go&nbsp;to</b> statement.
 The exercise to translate an arbitrary flow diagram more or less mechanically
 into a jump-less one, however, is not to be recommended.
@@ -1206,14 +1232,14 @@ be <i>harmful</i>, but not <i>lethal</i>, and certainly not <i>useless</i>.
   <i>Comm. ACM 9</i> (June 1966), 413-432.
 
  <p>
- </p></li><li> <!-- 2. -->
+ <li> <!-- 2. -->
   <a name="BOHM66"></a>
-  Böhm, Corrado, and Jacopini Guiseppe. <br>
+  B&#246;hm, Corrado, and Jacopini Guiseppe. <br>
   Flow diagrams, Turing machines and languages with only two formation rules.
   <br>
   <i>Comm. ACM 9</i> (May 1966), 366-371.
- <p></p>
-</li></ol>
+ </p>
+</ol>
 
 <a name="signed"></a>
 <p>
@@ -1227,13 +1253,13 @@ Eindhoven, The Netherlands</i>
   <td bgcolor="#F0F0E0">&nbsp;</td>
  </tr>
 
-</tbody></table>
+</table>
 
 <p></p>
 
 
 <!-- ----------------------------------------------------------------------- -->
-<hr>
+<hr></hr>
 
 <a name="part-2"></a>
 <h1 align="center"> Part II </h1>
@@ -1252,21 +1278,21 @@ The discipline of programming has progressed through several phases, with each
 new advance being touted as the next "better" way of programming.
 A&nbsp;brief list of some of these advancements:
 
-</p><ul>
+<ul>
  <li> <i>structured programming</i>
- </li><li> <i>functional decomposition</i>
- </li><li> <i>top-down design and step-wise refinement</i>
- </li><li> <i>bottom-up design</i>
- </li><li> <i>iterative design</i>
- </li><li> <i>third generation languages</i>
- </li><li> <i>fourth generation languages</i>
- </li><li> <i>fifth generation languages</i>
- </li><li> <i>object-oriented programming</i>
- </li><li> <i>components</i>
- </li><li> <i>programming patterns</i>
- </li><li> <i>aspect programming</i>
-</li></ul>
-<p></p>
+ <li> <i>functional decomposition</i>
+ <li> <i>top-down design and step-wise refinement</i>
+ <li> <i>bottom-up design</i>
+ <li> <i>iterative design</i>
+ <li> <i>third generation languages</i>
+ <li> <i>fourth generation languages</i>
+ <li> <i>fifth generation languages</i>
+ <li> <i>object-oriented programming</i>
+ <li> <i>components</i>
+ <li> <i>programming patterns</i>
+ <li> <i>aspect programming</i>
+</ul>
+</p>
 
 <p>
 Each approach caused a paradigm shift in programming theory,
@@ -1291,7 +1317,7 @@ language.)
 </p>
 
 <!-- ------------------------------- -->
-<hr width="50%">
+<hr width="50%"></hr>
 
 <a name="if-then-else"></a>
 <h3> if-then-else </h3>
@@ -1303,14 +1329,15 @@ All structured programming languages provide some form of the
 
 <p></p>
 <table rows="1" cols="1" bgcolor="#E0FFE0" width="80%" align="center">
- <tbody><tr>
+ <tr>
   <td>
-<pre><b>if</b> <i>conditional_expression</i> <b>then</b>
+<pre>
+<b>if</b> <i>conditional_expression</i> <b>then</b>
     <i>statement<sub>1</sub></i>
 </pre>
   </td>
  </tr>
-</tbody></table>
+</table>
 
 <p>
 and the <b>if-then-else</b> construct:
@@ -1318,16 +1345,17 @@ and the <b>if-then-else</b> construct:
 
 <p></p>
 <table rows="1" cols="1" bgcolor="#E0FFE0" width="80%" align="center">
- <tbody><tr>
+ <tr>
   <td>
-<pre><b>if</b> <i>conditional_expression</i> <b>then</b>
+<pre>
+<b>if</b> <i>conditional_expression</i> <b>then</b>
     <i>statement<sub>1</sub></i>
 <b>else</b>
     <i>statement<sub>2</sub></i>
 </pre>
   </td>
  </tr>
-</tbody></table>
+</table>
 
 <p>
 This second construct is the most obvious replacement for the unstructured
@@ -1336,9 +1364,10 @@ This second construct is the most obvious replacement for the unstructured
 
 <p></p>
 <table rows="1" cols="1" bgcolor="#E8E8E8" width="80%" align="center">
- <tbody><tr>
+ <tr>
   <td>
-<pre><b>if</b> <i>conditional_expression</i> <b>then</b>
+<pre>
+<b>if</b> <i>conditional_expression</i> <b>then</b>
     <i>statement<sub>1</sub></i>
     <b>goto</b> endif1
 else1:
@@ -1348,7 +1377,7 @@ endif1:
 </pre>
   </td>
  </tr>
-</tbody></table>
+</table>
 
 <p>
 The <b>if-then</b> statement can be implemented in machine code as something
@@ -1357,9 +1386,10 @@ like the following:
 
 <p></p>
 <table rows="1" cols="1" bgcolor="#FFFFC0" width="80%" align="center">
- <tbody><tr>
+ <tr>
   <td>
-<pre># if-then statement
+<pre>
+# if-then statement
     move <i>expression</i>, reg1
     <b>jump</b> not <i>condition</i>, label1
     <i>statement<sub>1</sub></i>
@@ -1368,7 +1398,7 @@ label1:
 </pre>
   </td>
  </tr>
-</tbody></table>
+</table>
 
 <p>
 And likewise for the <b>if-then-else</b> statement:
@@ -1376,9 +1406,10 @@ And likewise for the <b>if-then-else</b> statement:
 
 <p></p>
 <table rows="1" cols="1" bgcolor="#FFFFC0" width="80%" align="center">
- <tbody><tr>
+ <tr>
   <td>
-<pre># if-then-else statement
+<pre>
+# if-then-else statement
     move <i>expression</i>, reg1
     <b>jump</b> not <i>condition</i>, label1
     <i>statement<sub>1</sub></i>
@@ -1390,7 +1421,7 @@ label2:
 </pre>
   </td>
  </tr>
-</tbody></table>
+</table>
 
 <p>
 A common programming idiom is to write multiple <b>if-then</b> statements
@@ -1399,9 +1430,10 @@ in a sequence:
 
 <p></p>
 <table rows="1" cols="1" bgcolor="#E0FFE0" width="80%" align="center">
- <tbody><tr>
+ <tr>
   <td>
-<pre><b>if</b> <i>condition<sub>1</sub></i> <b>then</b>
+<pre>
+<b>if</b> <i>condition<sub>1</sub></i> <b>then</b>
     <i>statement<sub>1</sub></i>
 <b>else if</b> <i>condition<sub>2</sub></i> <b>then</b>
     <i>statement<sub>2</sub></i>
@@ -1412,7 +1444,7 @@ in a sequence:
 </pre>
   </td>
  </tr>
-</tbody></table>
+</table>
 
 <p>
 It is more difficult in some languages (especially some older languages)
@@ -1422,9 +1454,10 @@ like the following code, which is functionally equivalent but harder to read:
 
 <p></p>
 <table rows="1" cols="1" bgcolor="#E0FFE0" width="80%" align="center">
- <tbody><tr>
+ <tr>
   <td>
-<pre><b>if</b> <i>condition<sub>1</sub></i> <b>then</b>
+<pre>
+<b>if</b> <i>condition<sub>1</sub></i> <b>then</b>
     <i>statement<sub>1</sub></i>
 <b>else</b>
     <b>if</b> <i>condition<sub>2</sub></i> <b>then</b>
@@ -1440,7 +1473,7 @@ like the following code, which is functionally equivalent but harder to read:
 </pre>
   </td>
  </tr>
-</tbody></table>
+</table>
 
 <p>
 Some languages provide a separate keyword for the <b>else-if</b> combination
@@ -1452,7 +1485,7 @@ in a multiple <b>if-then</b> sequence
 </p>
 
 <!-- ------------------------------- -->
-<hr width="50%">
+<hr width="50%"></hr>
 
 <a name="select"></a>
 <h3> select </h3>
@@ -1469,9 +1502,10 @@ choices for a given expression value:
 
 <p></p>
 <table rows="1" cols="1" bgcolor="#E0FFE0" width="80%" align="center">
- <tbody><tr>
+ <tr>
   <td>
-<pre><b>select</b> <i>expression</i> <b>in</b>
+<pre>
+<b>select</b> <i>expression</i> <b>in</b>
     <b>case</b> <i>constant<sub>1</sub></i>:
         <i>statement<sub>1</sub></i>
 
@@ -1487,7 +1521,7 @@ choices for a given expression value:
 </pre>
   </td>
  </tr>
-</tbody></table>
+</table>
 
 <p>
 This is equivalent to the sequence of multiple <b>if-then</b> statements
@@ -1503,9 +1537,10 @@ the following:
 
 <p></p>
 <table rows="1" cols="1" bgcolor="#FFFFC0" width="80%" align="center">
- <tbody><tr>
+ <tr>
   <td>
-<pre># select statement
+<pre>
+# select statement
     move <i>expression</i>, reg1
     cmp  reg1, <i>constant<sub>1</sub></i>
     <b>jump</b> not equal, label1
@@ -1528,7 +1563,7 @@ label4:
 </pre>
   </td>
  </tr>
-</tbody></table>
+</table>
 
 <p>
 More efficient implementations are possible, such as using an index into a
@@ -1548,7 +1583,7 @@ difficult programming situations.
 </p>
 
 <!-- ------------------------------- -->
-<hr width="50%">
+<hr width="50%"></hr>
 
 <a name="do-while"></a>
 <h3> do-while </h3>
@@ -1562,15 +1597,16 @@ loop body (providing at least one iteration):
 
 <p></p>
 <table rows="1" cols="1" bgcolor="#E0FFE0" width="80%" align="center">
- <tbody><tr>
+ <tr>
   <td>
-<pre><b>do</b>
+<pre>
+<b>do</b>
     <i>statements</i>
 <b>while</b> <i>conditional_expression</i>
 </pre>
   </td>
  </tr>
-</tbody></table>
+</table>
 
 <p>
 The other form places the conditional test after
@@ -1579,15 +1615,16 @@ the loop body (providing zero or more iterations):
 
 <p></p>
 <table rows="1" cols="1" bgcolor="#E0FFE0" width="80%" align="center">
- <tbody><tr>
+ <tr>
   <td>
-<pre><b>while</b> <i>conditional_expression</i> <b>do</b>
+<pre>
+<b>while</b> <i>conditional_expression</i> <b>do</b>
     <i>statements</i>
 <b>end</b>
 </pre>
   </td>
  </tr>
-</tbody></table>
+</table>
 
 <p>
 These constructs are functionally equivalent to the following code that
@@ -1596,9 +1633,10 @@ uses goto:
 
 <p></p>
 <table rows="1" cols="1" bgcolor="#E8E8E8" width="80%" align="center">
- <tbody><tr>
+ <tr>
   <td>
-<pre># do-while
+<pre>
+# do-while
 loop:
     <i>statements</i>
     if <i>conditional_expression</i>
@@ -1606,7 +1644,7 @@ loop:
 </pre>
   </td>
  </tr>
-</tbody></table>
+</table>
 
 <p>
 And:
@@ -1614,9 +1652,10 @@ And:
 
 <p></p>
 <table rows="1" cols="1" bgcolor="#E8E8E8" width="80%" align="center">
- <tbody><tr>
+ <tr>
   <td>
-<pre># while-do
+<pre>
+# while-do
 loop:
     if not <i>conditional_expression</i>
         <b>goto</b> endloop
@@ -1627,7 +1666,7 @@ endloop:
 </pre>
   </td>
  </tr>
-</tbody></table>
+</table>
 
 <p>
 These constructs can be implemented in machine code as something like the
@@ -1636,9 +1675,10 @@ following:
 
 <p></p>
 <table rows="1" cols="1" bgcolor="#FFFFC0" width="80%" align="center">
- <tbody><tr>
+ <tr>
   <td>
-<pre># do-while statement
+<pre>
+# do-while statement
 label1:
     <i>statements</i>
     move <i>expression</i>, reg1
@@ -1647,13 +1687,14 @@ label1:
 </pre>
   </td>
  </tr>
-</tbody></table>
+</table>
 
 <p></p>
 <table rows="1" cols="1" bgcolor="#FFFFC0" width="80%" align="center">
- <tbody><tr>
+ <tr>
   <td>
-<pre># while-do statement
+<pre>
+# while-do statement
 label1:
     move <i>expression</i>, reg1
     <b>jump</b> not <i>condition</i>, label2
@@ -1664,7 +1705,7 @@ label2:
 </pre>
   </td>
  </tr>
-</tbody></table>
+</table>
 
 <p>
 Some languages provide other variants of the <b>do-while</b> statement, e.g.,
@@ -1684,12 +1725,12 @@ arise (which is discussed further below).
 Some languages allow breaking out of nested loops with a
 <b>labeled break</b> construct.
 (This is discussed further in
-Example <a href="http://david.tribble.com/text/goto.html#example-l-1">L-1</a> and
-Example <a href="http://david.tribble.com/text/goto.html#example-n-1">N-1</a> below.)
+Example <a href="#example-l-1">L-1</a> and
+Example <a href="#example-n-1">N-1</a> below.)
 </p>
 
 <!-- ------------------------------- -->
-<hr width="50%">
+<hr width="50%"></hr>
 
 <a name="for-loop"></a>
 <h3> for-loop </h3>
@@ -1705,15 +1746,16 @@ of the loop iterations:
 
 <p></p>
 <table rows="1" cols="1" bgcolor="#E0FFE0" width="80%" align="center">
- <tbody><tr>
+ <tr>
   <td>
-<pre><b>for</b> i = <i>low_value</i> <b>to</b> <i>high_value</i> <b>by</b> <i>increment</i> <b>do</b>
+<pre>
+<b>for</b> i = <i>low_value</i> <b>to</b> <i>high_value</i> <b>by</b> <i>increment</i> <b>do</b>
     <i>statements</i>
 <b>end</b>
 </pre>
   </td>
  </tr>
-</tbody></table>
+</table>
 
 <p>
 This is equivalent to the following unstructured code that uses goto:
@@ -1721,9 +1763,10 @@ This is equivalent to the following unstructured code that uses goto:
 
 <p></p>
 <table rows="1" cols="1" bgcolor="#E8E8E8" width="80%" align="center">
- <tbody><tr>
+ <tr>
   <td>
-<pre>    i = <i>low_value</i>
+<pre>
+    i = <i>low_value</i>
 loop:
     if i &gt; <i>high_value</i>
         <b>goto</b> endloop
@@ -1735,7 +1778,7 @@ endloop:
 </pre>
   </td>
  </tr>
-</tbody></table>
+</table>
 
 <p>
 This construct can be implemented in machine code as something like the
@@ -1744,9 +1787,10 @@ following:
 
 <p></p>
 <table rows="1" cols="1" bgcolor="#FFFFC0" width="80%" align="center">
- <tbody><tr>
+ <tr>
   <td>
-<pre># for-loop statement
+<pre>
+# for-loop statement
     move <i>low_value</i>, reg1
 label1:
     cmp  reg1, <i>high_value</i>
@@ -1759,7 +1803,7 @@ label2:
 </pre>
   </td>
  </tr>
-</tbody></table>
+</table>
 
 <p>
 To fully support the <b>for-loop</b>, a language should handle negative
@@ -1789,9 +1833,10 @@ The following code uses a <b>break</b> statement to do this:
 
 <p></p>
 <table rows="1" cols="1" bgcolor="#E0FFE0" width="80%" align="center">
- <tbody><tr>
+ <tr>
   <td>
-<pre><b>for</b> i = <i>low_value</i> <b>to</b> <i>high_value</i> <b>by</b> <i>increment</i> <b>do</b>
+<pre>
+<b>for</b> i = <i>low_value</i> <b>to</b> <i>high_value</i> <b>by</b> <i>increment</i> <b>do</b>
     <i>statements<sub>1</sub></i>
     if <i>condition</i>
         <b>break</b>
@@ -1800,7 +1845,7 @@ The following code uses a <b>break</b> statement to do this:
 </pre>
   </td>
  </tr>
-</tbody></table>
+</table>
 
 <p>
 Some languages provide special syntax specifically for terminating a loop in
@@ -1809,9 +1854,10 @@ the middle of its body:
 
 <p></p>
 <table rows="1" cols="1" bgcolor="#E0FFE0" width="80%" align="center">
- <tbody><tr>
+ <tr>
   <td>
-<pre><b>for</b> i = <i>low_value</i> <b>to</b> <i>high_value</i> <b>by</b> <i>increment</i> <b>do</b>
+<pre>
+<b>for</b> i = <i>low_value</i> <b>to</b> <i>high_value</i> <b>by</b> <i>increment</i> <b>do</b>
     <i>statements<sub>1</sub></i>
 <b>exit when</b> <i>condition</i>
     <i>statements<sub>2</sub></i>
@@ -1819,7 +1865,7 @@ the middle of its body:
 </pre>
   </td>
  </tr>
-</tbody></table>
+</table>
 
 <p>
 Like the <b>break</b> statement, the <b>exit&nbsp;when</b> clause allows the
@@ -1831,9 +1877,10 @@ following code:
 
 <p></p>
 <table rows="1" cols="1" bgcolor="#E8E8E8" width="80%" align="center">
- <tbody><tr>
+ <tr>
   <td>
-<pre><b>for</b> i = <i>low_value</i> <b>to</b> <i>high_value</i> <b>by</b> <i>increment</i> <b>do</b>
+<pre>
+<b>for</b> i = <i>low_value</i> <b>to</b> <i>high_value</i> <b>by</b> <i>increment</i> <b>do</b>
     <i>statements<sub>1</sub></i>
     if <i>condition</i>
         <b>goto</b> endloop
@@ -1844,7 +1891,7 @@ endloop:
 </pre>
   </td>
  </tr>
-</tbody></table>
+</table>
 
 <p>
 A related programming problem is coding a loop to execute a portion of its body
@@ -1855,9 +1902,10 @@ Some languages provide a <b>continue</b> statement for this:
 
 <p></p>
 <table rows="1" cols="1" bgcolor="#E0FFE0" width="80%" align="center">
- <tbody><tr>
+ <tr>
   <td>
-<pre><b>for</b> i = <i>low_value</i> <b>to</b> <i>high_value</i> <b>by</b> <i>increment</i> <b>do</b>
+<pre>
+<b>for</b> i = <i>low_value</i> <b>to</b> <i>high_value</i> <b>by</b> <i>increment</i> <b>do</b>
     <i>statements<sub>1</sub></i>
     if <i>condition</i>
         <b>continue</b>
@@ -1866,7 +1914,7 @@ Some languages provide a <b>continue</b> statement for this:
 </pre>
   </td>
  </tr>
-</tbody></table>
+</table>
 
 <p>
 This replaces the use of an explicit goto, as shown in the following
@@ -1875,9 +1923,10 @@ code:
 
 <p></p>
 <table rows="1" cols="1" bgcolor="#E8E8E8" width="80%" align="center">
- <tbody><tr>
+ <tr>
   <td>
-<pre><b>for</b> i = <i>low_value</i> <b>to</b> <i>high_value</i> <b>by</b> <i>increment</i> <b>do</b>
+<pre>
+<b>for</b> i = <i>low_value</i> <b>to</b> <i>high_value</i> <b>by</b> <i>increment</i> <b>do</b>
     <i>statements<sub>1</sub></i>
     if <i>condition</i>
         <b>goto</b> nextloop
@@ -1887,12 +1936,12 @@ nextloop:
 </pre>
   </td>
  </tr>
-</tbody></table>
+</table>
 
 <p></p>
 
 <!-- ------------------------------- -->
-<hr width="50%">
+<hr width="50%"></hr>
 
 <a name="other-languages"></a>
 <h2> Other Approaches </h2>
@@ -1931,7 +1980,7 @@ extremely flexible non-homogeneous data types.
 
 
 <!-- ----------------------------------------------------------------------- -->
-<hr>
+<hr></hr>
 
 <a name="part-3"></a>
 <h1 align="center"> Part III </h1>
@@ -1962,9 +2011,9 @@ sufficiently advanced to handle them without using goto.
 </p>
 
 <!-- ------------------------------- -->
-<hr width="50%&gt;&lt;/hr&gt;
+<hr width="50%></hr>
 
-&lt;a name=" loop-exits"="">
+<a name="loop-exits"></a>
 <h3> Loop Exits </h3>
 
 <p>
@@ -1986,12 +2035,13 @@ C&nbsp;provides simple loop escape mechanisms, i.e., the <b>break</b> and
 <a name="example-l-1"></a>
 <p></p>
 <table rows="1" cols="1" bgcolor="#E0FFE0" width="80%" align="center">
- <tbody><tr>
+ <tr>
   <td>
 <font face="helvetica,arial,sans serif">
  <center><b>Example L-1 - Loop Exit Using Break</b></center>
 </font>
-<pre>//<i> Simple loop with an early exit</i>
+<pre>
+//<i> Simple loop with an early exit</i>
 
 for (;;)
 {
@@ -2006,7 +2056,7 @@ for (;;)
 </pre>
   </td>
  </tr>
-</tbody></table>
+</table>
 
 <!-- ------------------------------- -->
 <p>
@@ -2021,12 +2071,13 @@ at the top of each loop.
 <a name="example-l-2"></a>
 <p></p>
 <table rows="1" cols="1" bgcolor="#E0FFE0" width="80%" align="center">
- <tbody><tr>
+ <tr>
   <td>
 <font face="helvetica,arial,sans serif">
  <center><b>Example L-2 - Loop Exit Without Using Break</b></center>
 </font>
-<pre>//<i> Simple loop with no loop escape mechanism</i>
+<pre>
+//<i> Simple loop with no loop escape mechanism</i>
 
 bool  <b>incomplete</b> = true;
 
@@ -2043,7 +2094,7 @@ while (<b>incomplete</b>)
 </pre>
   </td>
  </tr>
-</tbody></table>
+</table>
 
 <p>
 For more complicated exits from loops, namely breaking out of a loop iteration
@@ -2057,12 +2108,13 @@ that are prefixed with label names.
 <a name="example-n-1"></a>
 <p></p>
 <table rows="1" cols="1" bgcolor="#E0FFE0" width="80%" align="center">
- <tbody><tr>
+ <tr>
   <td>
 <font face="helvetica,arial,sans serif">
  <center><b>Example N-1 - Exiting a Nested Loop</b></center>
 </font>
-<pre>//<i> [Java]</i>
+<pre>
+//<i> [Java]</i>
 //<i> Exiting a nested loop</i>
 
 <b>readLoop:</b>
@@ -2090,7 +2142,7 @@ that are prefixed with label names.
 </pre>
   </td>
  </tr>
-</tbody></table>
+</table>
 
 <!-- ------------------------------- -->
 <p>
@@ -2102,12 +2154,13 @@ one level of loop nesting, so goto statements must be employed.
 <a name="example-n-2"></a>
 <p></p>
 <table rows="1" cols="1" bgcolor="#E0FFE0" width="80%" align="center">
- <tbody><tr>
+ <tr>
   <td>
 <font face="helvetica,arial,sans serif">
  <center><b>Example N-2 - Exiting a Nested Loop</b></center>
 </font>
-<pre>//<i> [C / C++]</i>
+<pre>
+//<i> [C / C++]</i>
 //<i> Exiting a nested loop without labeled loops</i>
 
     <b>for</b> (;;)
@@ -2136,7 +2189,7 @@ one level of loop nesting, so goto statements must be employed.
 </pre>
   </td>
  </tr>
-</tbody></table>
+</table>
 
 <p>
 This is about as clean as the Java code and just as efficient.
@@ -2146,19 +2199,20 @@ This is about as clean as the Java code and just as efficient.
 <p>
 The alternative is to use an extra variable and extra <b>if</b>
 statements to avoid the use of gotos, as in
-Example <a href="http://david.tribble.com/text/goto.html#example-l-2">L-2</a>.
+Example <a href="#example-l-2">L-2</a>.
 </p>
 
 <!-- ------------------------------- -->
 <a name="example-n-3"></a>
 <p></p>
 <table rows="1" cols="1" bgcolor="#E0FFE0" width="80%" align="center">
- <tbody><tr>
+ <tr>
   <td>
 <font face="helvetica,arial,sans serif">
  <center><b>Example N-3 - Exiting a Nested Loop Without Goto</b></center>
 </font>
-<pre>//<i> [C / C++]</i>
+<pre>
+//<i> [C / C++]</i>
 //<i> Exiting a nested loop without goto</i>
 
     bool  <b>notDone</b> =  true;
@@ -2188,12 +2242,12 @@ Example <a href="http://david.tribble.com/text/goto.html#example-l-2">L-2</a>.
 </pre>
   </td>
  </tr>
-</tbody></table>
+</table>
 
 <p></p>
 
 <!-- ------------------------------- -->
-<hr width="50%">
+<hr width="50%"></hr>
 
 <a name="discussion-3"></a>
 <a name="error-handling"></a>
@@ -2216,13 +2270,13 @@ well-crafted goto statements provide a reasonable substitute.
 
 <p>
 Consider a procedure that performs four operations:
-</p><ol type="1">
+<ol type="1">
  <li> Allocate a control object.
- </li><li> Save a copy of a specified file name.
- </li><li> Open the named file.
- </li><li> Read a header block from the opened file.
-</li></ol>
-<p></p>
+ <li> Save a copy of a specified file name.
+ <li> Open the named file.
+ <li> Read a header block from the opened file.
+</ol>
+</p>
 
 <p>
 The following example, written in C, does these operations:
@@ -2232,12 +2286,13 @@ The following example, written in C, does these operations:
 <p>
 </p>
 <table rows="1" cols="1" bgcolor="#E0FFE0" width="80%" align="center">
- <tbody><tr>
+ <tr>
   <td>
 <font face="helvetica,arial,sans serif">
  <center><b>Example E-1 - Error Handling Using Gotos</b></center>
 </font>
-<pre>//<i> open_control() -- [C]</i>
+<pre>
+//<i> open_control() -- [C]</i>
 //<i> Open a file and assign it a control object.</i>
 //<i> Returns the control object on success, or NULL on failure.</i>
 
@@ -2288,7 +2343,7 @@ struct Control * open_control(const char *fname)
 </pre>
   </td>
  </tr>
-</tbody></table>
+</table>
 
 <p>
 Any of the four operations can fail, which causes the whole function to fail.
@@ -2322,12 +2377,13 @@ we get something like the following.
 <a name="example-e-2"></a>
 <p></p>
 <table rows="1" cols="1" bgcolor="#E0FFE0" width="80%" align="center">
- <tbody><tr>
+ <tr>
   <td>
 <font face="helvetica,arial,sans serif">
  <center><b>Example E-2 - Error Handling With Gotos Removed</b></center>
 </font>
-<pre>//<i> open_control() -- [C, version 2, without gotos]</i>
+<pre>
+//<i> open_control() -- [C, version 2, without gotos]</i>
 //<i> Open a file and assign it a control object.</i>
 //<i> Returns the control object on success, or NULL on failure.</i>
 
@@ -2382,7 +2438,7 @@ struct Control * open_control(const char *fname)
 </pre>
   </td>
  </tr>
-</tbody></table>
+</table>
 
 <p>
 The problem with this style of error handling is that we end up with a lot of
@@ -2398,12 +2454,13 @@ but avoids code duplication.
 <a name="example-e-3"></a>
 <p></p>
 <table rows="1" cols="1" bgcolor="#E0FFE0" width="80%" align="center">
- <tbody><tr>
+ <tr>
   <td>
 <font face="helvetica,arial,sans serif">
  <center><b>Example E-3 - Error Handling With Gotos Removed</b></center>
 </font>
-<pre>//<i> open_control() -- [C, version 3, without gotos]</i>
+<pre>
+//<i> open_control() -- [C, version 3, without gotos]</i>
 //<i> Open a file and assign it a control object.</i>
 //<i> Returns the control object on success, or NULL on failure.</i>
 
@@ -2463,7 +2520,7 @@ struct Control * open_control(const char *fname)
 </pre>
   </td>
  </tr>
-</tbody></table>
+</table>
 
 <p>
 Note that, as before, the clean-up operations are performed in the reverse order
@@ -2472,14 +2529,14 @@ that their corresponding allocation operations are performed.
 
 <p>
 This style of error handling comes close to being as clean and succint as
-the style used in Example <a href="http://david.tribble.com/text/goto.html#example-e-1">E-1</a>.
+the style used in Example <a href="#example-e-1">E-1</a>.
 However, it requires an additional error indicator variable and extra
 conditional (<b>if</b>) statements.
 </p>
 
 <!-- ------------------------------- -->
 <p>
-If the function of Example <a href="http://david.tribble.com/text/goto.html#example-e-1">E-1</a> is written
+If the function of Example <a href="#example-e-1">E-1</a> is written
 in C++, it can take advantage of the fact that C++ supports an
 exception handling mechanism (i.e., <b>try-catch</b> statements),
 which makes the error handling in the code more obvious:
@@ -2488,12 +2545,13 @@ which makes the error handling in the code more obvious:
 <a name="example-t-1"></a>
 <p></p>
 <table rows="1" cols="1" bgcolor="#E0FFE0" width="80%" align="center">
- <tbody><tr>
+ <tr>
   <td>
 <font face="helvetica,arial,sans serif">
  <center><b>Example T-1 - Error Handling Without Gotos</b></center>
 </font>
-<pre>//<i> openControl() -- [C++]</i>
+<pre>
+//<i> openControl() -- [C++]</i>
 //<i> Open a file and assign it a control object.</i>
 //<i> Returns the control object on success, or NULL on failure.</i>
 
@@ -2549,11 +2607,11 @@ Control * openControl(const char *fname)
 </pre>
   </td>
  </tr>
-</tbody></table>
+</table>
 
 <p>
 Note that the amount of work required to clean up after a failure is exactly
-the same as in Example <a href="http://david.tribble.com/text/goto.html#example-e-1">E-1</a>.
+the same as in Example <a href="#example-e-1">E-1</a>.
 Moreover, the explicit use of a <b>try-catch</b> statement
 makes it obvious that the code is for error handling and recovery.
 </p>
@@ -2572,12 +2630,13 @@ failures.
 <a name="example-t-2"></a>
 <p></p>
 <table rows="1" cols="1" bgcolor="#E0FFE0" width="80%" align="center">
- <tbody><tr>
+ <tr>
   <td>
 <font face="helvetica,arial,sans serif">
  <center><b>Example T-2 - Error Handling Without Gotos</b></center>
 </font>
-<pre>//<i> openControl() -- [C++, version 2]</i>
+<pre>
+//<i> openControl() -- [C++, version 2]</i>
 //<i> Open a file and assign it a control object.</i>
 //<i> Returns the control object on success, or NULL on failure.</i>
 
@@ -2617,7 +2676,7 @@ Control * openControl(const char *fname)
 </pre>
   </td>
  </tr>
-</tbody></table>
+</table>
 
 <p>
 While the <b>try-catch</b> solution is cleaner than using <b>goto</b>s,
@@ -2637,12 +2696,13 @@ occurs.
 <a name="example-t-3"></a>
 <p></p>
 <table rows="1" cols="1" bgcolor="#E0FFE0" width="80%" align="center">
- <tbody><tr>
+ <tr>
   <td>
 <font face="helvetica,arial,sans serif">
  <center><b>Example T-3 - finally clause</b></center>
 </font>
-<pre>//<i> [Java]</i>
+<pre>
+//<i> [Java]</i>
 
 void write3(Resource dest, Item[] data)
 {
@@ -2668,7 +2728,7 @@ void write3(Resource dest, Item[] data)
 </pre>
   </td>
  </tr>
-</tbody></table>
+</table>
 
 <!-- ------------------------------- -->
 <a name="retry-clause"></a>
@@ -2704,7 +2764,7 @@ method ...
 
 
 <!-- ----------------------------------------------------------------------- -->
-<hr>
+<hr></hr>
 
 <a name="conclusion"></a>
 <h1 align="center"> Conclusion </h1>
@@ -2725,14 +2785,14 @@ high-level languages.
 </p>
 
 <p>
-Examples <a href="http://david.tribble.com/text/goto.html#example-t-2">T-2</a> and <a href="http://david.tribble.com/text/goto.html#example-n-1">N-1</a>
+Examples <a href="#example-t-2">T-2</a> and <a href="#example-n-1">N-1</a>
 demonstrate that Dijkstra's maxim can be achieved <i>provided</i> that the
 programming language provides a reasonable set of control structures that can
 serve in place of simple goto statements.
 </p>
 
 <p>
-Examples <a href="http://david.tribble.com/text/goto.html#example-e-1">E-1</a> and <a href="http://david.tribble.com/text/goto.html#example-n-2">N-2</a>
+Examples <a href="#example-e-1">E-1</a> and <a href="#example-n-2">N-2</a>
 demonstrate the corollary to this,
 that if a programming language does <i>not</i> provide reasonably powerful flow
 control structures, there are programming problems that can be solved reasonably
@@ -2765,7 +2825,7 @@ and when not to use it for evil.
 </p>
 
 <!-- ------------------------------- -->
-<hr width="50%">
+<hr width="50%"></hr>
 
 <a name="example-last"></a>
 <p>
@@ -2783,12 +2843,13 @@ error in remembering.
 
 <p></p>
 <table rows="1" cols="1" bgcolor="#E0FFE0" width="80%" align="center">
- <tbody><tr>
+ <tr>
   <td>
 <font face="helvetica,arial,sans serif">
  <center><b>Last Example - Nontrivial Gotos</b></center>
 </font>
-<pre>int parse()
+<pre>
+int parse()
 {
     Token   tok;
 
@@ -2807,7 +2868,7 @@ reducing:
 </pre>
   </td>
  </tr>
-</tbody></table>
+</table>
 
 <p>
 I leave it as an exercise for the reader to rewrite this without
@@ -2816,7 +2877,7 @@ using goto statements.
 
 
 <!-- ----------------------------------------------------------------------- -->
-<hr>
+<hr></hr>
 
 <a name="references"></a>
 <h2>References</h2>
@@ -2834,80 +2895,89 @@ using goto statements.
 
  <p>
  <a name="ref-ewd"></a>
- </p></li><li>
+ <li>
   Biography of <b>Edsger W. Dijkstra</b> <br>
   born May 1930, died Aug 2002 <br>
   Wikipedia: 
-  <a href="http://en.wikipedia.org/wiki/Dijkstra">en.wikipedia.org/wiki/Dijkstra</a>
- <p></p>
+  <a href="http://en.wikipedia.org/wiki/Dijkstra"
+   >en.wikipedia.org/wiki/Dijkstra</a>
+ </p>
 
  <p>
  <a name="ref-carh"></a>
- </p></li><li>
+ <li>
   Biography of <b>C.&nbsp;A.&nbsp;R. (Tony) Hoare</b> <br>
   Wikipedia: 
-  <a href="http://en.wikipedia.org/wiki/C._A._R._Hoare">en.wikipedia.org/wiki/C._A._R._Hoare</a>
- <p></p>
+  <a href="http://en.wikipedia.org/wiki/C._A._R._Hoare"
+   >en.wikipedia.org/wiki/C._A._R._Hoare</a>
+ </p>
 
  <p>
  <a name="ref-nw"></a>
- </p></li><li>
+ <li>
   Biography of <b>Niklaus Wirth</b> <br>
   Wikipedia: 
-  <a href="http://en.wikipedia.org/wiki/Wirth">en.wikipedia.org/wiki/Wirth</a> <br>
+  <a href="http://en.wikipedia.org/wiki/Wirth"
+   >en.wikipedia.org/wiki/Wirth</a> <br>
   Home page:
-  <a href="http://www.cs.inf.ethz.ch/~wirth">www.cs.inf.ethz.ch/~wirth</a>
- <p></p>
+  <a href="http://www.cs.inf.ethz.ch/~wirth"
+   >www.cs.inf.ethz.ch/~wirth</a>
+ </p>
 
  <p>
  <a name="ref-gs"></a>
- </p></li><li>
+ <li>
   <b>Goto</b> programming statement <br>
   Wikipedia:
   <a href="http://en.wikipedia.org/wiki/GOTO">en.wikipedia.org/wiki/GOTO</a>
- <p></p>
+ </p>
 
  <p>
  <a name="ref-fv"></a>
- </p></li><li>
+ <li>
   <b>Formal Verification</b> <br>
   Wikipedia: 
-  <a href="http://en.wikipedia.org/wiki/Formal_verification">en.wikipedia.org/wiki/Formal_verification</a>
- <p></p>
+  <a href="http://en.wikipedia.org/wiki/Formal_verification"
+   >en.wikipedia.org/wiki/Formal_verification</a>
+ </p>
 
  <p>
  <a name="ref-pd"></a>
- </p></li><li>
+ <li>
   <b>Program Derivation</b> <br>
   Wikipedia:
-  <a href="http://en.wikipedia.org/wiki/Program_derivation">en.wikipedia.org/wiki/Program_derivation</a>
- <p></p>
+  <a href="http://en.wikipedia.org/wiki/Program_derivation"
+   >en.wikipedia.org/wiki/Program_derivation</a>
+ </p>
 
  <p>
  <a name="ref-hl"></a>
- </p></li><li>
+ <li>
   <b>Hoare Logic</b> <br>
   Wikipedia:
-  <a href="http://en.wikipedia.org/wiki/Hoare_logic">en.wikipedia.org/wiki/Hoare_logic</a>
- <p></p>
+  <a href="http://en.wikipedia.org/wiki/Hoare_logic"
+   >en.wikipedia.org/wiki/Hoare_logic</a>
+ </p>
 
  <p>
  <a name="ref-abcp"></a>
- </p></li><li>
+ <li>
   <b>An Axiomatic Basis For Computer Programming</b> <br>
   C.&nbsp;A.&nbsp;R. (Tony) Hoare <br>
   <i>Communications of the ACM</i> (CACM) <br>
   v.12 n.10, Oct 1969 <br>
-  <a href="http://portal.acm.org/citation.cfm?doid=363235.363259">portal.acm.org/citation.cfm?doid=363235.363259</a>
+  <a href="http://portal.acm.org/citation.cfm?doid=363235.363259"
+   >portal.acm.org/citation.cfm?doid=363235.363259</a>
   (subscription required)
- <p></p>
+ </p>
 
  <p>
  <a name="ref-pln"></a>
- </p></li><li>
+ <li>
   <b>Programming Language Newsgroups</b> <br>
-  <a href="http://groups-beta.google.com/groups/dir?q=comp.lang">groups.google.com/groups/dir?q=comp.lang.*</a> <br>
- <p></p>
+  <a href="http://groups-beta.google.com/groups/dir?q=comp.lang"
+   >groups.google.com/groups/dir?q=comp.lang.*</a> <br>
+ </p>
 
 <!-- DO NOT ADD (requires subscription)
  <p>
@@ -2931,36 +3001,37 @@ using goto statements.
  </p>
 !-->
 
-</li></ol>
+</ol>
 
 
 <!-- ----------------------------------------------------------------------- -->
-<hr>
+<hr></hr>
 
 <a name="copyright"></a>
 <p>
 <i>
 The original letter by Dijkstra quoted in this document is
-Copyright ©1968 by the
-<a href="http://www.acm.org/">Association for Computing Machinery</a> (ACM).
+Copyright &copy;1968 by the
+<a href="http://www.acm.org">Association for Computing Machinery</a> (ACM).
 <!--
 Direct quoting of the original text for purposes of criticism and analysis
 is covered by the "fair use" section (§107) of U.S. copyright law.
 !-->
 All other text in this document is
-Copyright ©2005 by
+Copyright &copy;2005 by
 <a href="mailto:david@tribble.com">David R. Tribble</a>.
-</i></p><i>
+</p>
 
 <a name="this-doc"></a>
 <p>
 This document is:
-<a href="http://david.tribble.com/text/goto.html">http://david.tribble.com/text/goto.html</a>.
+<a href="http://david.tribble.com/text/goto.html"
+ >http://david.tribble.com/text/goto.html</a>.
 </p>
 
-</i></font><i>
-
-
+</font>
+</body>
+</html>
 <!--
 
 -----BEGIN PGP SIGNATURE-----
@@ -2971,4 +3042,3 @@ Epr/Q9O2c57utny1IlsfQXpo
 =emCo
 -----END PGP SIGNATURE-----
 !-->
-</i></li></body></html>
