@@ -27,7 +27,7 @@ Hash: SHA1
 <meta name="author"
   content="David R. Tribble"></meta>
 <meta name="copyright"
-  content="Copyright ©2005 by David R. Tribble, all rights reserved."></meta>
+  content="Copyright ï¿½2005 by David R. Tribble, all rights reserved."></meta>
 <meta name="language"
   content="en.usa.iso-8859-1"></meta>
 <meta name="description"
@@ -64,7 +64,7 @@ Hash: SHA1
 <body bgcolor="#FCFFF0">
 <font face="helvetica,arial,sans serif">
 
-<a name="top"></a>
+<span id="top"></span>
 <h1 align="center">
  Go To Statement Considered Harmful: <br>
  A Retrospective
@@ -105,7 +105,7 @@ Hash: SHA1
 <!-- ----------------------------------------------------------------------- -->
 <hr></hr>
 
-<a name="intro"></a>
+<span id="intro"></span>
 <h2> Introduction </h2>
 
 <p>
@@ -149,7 +149,7 @@ control structures.
 <!-- ----------------------------------------------------------------------- -->
 <hr></hr>
 
-<a name="background"></a>
+<span id="background"></span>
 <h2> Background </h2>
 
 <p>
@@ -243,10 +243,10 @@ have been invented if we had been left with only the word <i>error</i>.
 <!-- ----------------------------------------------------------------------- -->
 <hr></hr>
 
-<a name="part-1"></a>
+<span id="part-1"></span>
 <h1 align="center"> Part I </h1>
 
-<a name="Dijkstra-letter"></a>
+<span id="Dijkstra-letter"></span>
 <h2> Dijkstra's Letter, Annotated </h2>
 
 <p>
@@ -316,7 +316,7 @@ work.
 Editor:
 </p>
 
-<a name="para-1"></a>
+<span id="para-1"></span>
 <p>
 For a number of years I have been familiar with the observation that the quality
 of programmers is a decreasing function of the density of
@@ -362,7 +362,7 @@ although one is left to wonder exactly how this could be accomplished.
  <tr>
   <td colspan="2" bgcolor="#F0F8FF">
 <font color="#0000B0" face="times,times roman,serif" size="+1">
-<a name="para-2"></a>
+<span id="para-2"></span>
 <p>
 My first remark is that, although the programmer's activity ends when he has
 constructed a correct program, the process taking place under control of his
@@ -418,7 +418,7 @@ such terms today.
  <tr>
   <td colspan="2" bgcolor="#F0F8FF">
 <font color="#0000B0" face="times,times roman,serif" size="+1">
-<a name="para-3"></a>
+<span id="para-3"></span>
 <p>
 My second remark is that our intellectual powers are rather geared to master
 static relations and that our powers to visualize processes evolving in time are
@@ -466,7 +466,7 @@ one-line-at-a-time execution programming models.
  <tr>
   <td colspan="2" bgcolor="#F0F8FF">
 <font color="#0000B0" face="times,times roman,serif" size="+1">
-<a name="para-4"></a>
+<span id="para-4"></span>
 <p>
 Let us now consider how we can characterize the progress of a process.
 (You may think about this question in a very concrete manner: suppose that a
@@ -514,7 +514,7 @@ languages as a <i>lingua franca</i> for illustrating programming concepts.
  <tr>
   <td colspan="2" bgcolor="#F0F8FF">
 <font color="#0000B0" face="times,times roman,serif" size="+1">
-<a name="para-4b"></a>
+<span id="para-4b"></span>
 <p>
 (In the absence of <b>go&nbsp;to</b> statements I can permit myself the
 syntactic ambiguity in the last three words of the previous sentence:
@@ -560,7 +560,7 @@ So&nbsp;perhaps a better term would be <i>statement pointer</i>.
  <tr>
   <td colspan="2" bgcolor="#F0F8FF">
 <font color="#0000B0" face="times,times roman,serif" size="+1">
-<a name="para-5"></a>
+<span id="para-5"></span>
 <p>
 When we include conditional clauses
 (<b>if</b>&nbsp;<i>B</i>&nbsp;<b>then</b>&nbsp;<i>A</i>),
@@ -623,7 +623,7 @@ make it possible to prove their correctness mathematically.
  <tr>
   <td colspan="2" bgcolor="#F0F8FF">
 <font color="#0000B0" face="times,times roman,serif" size="+1">
-<a name="para-6"></a>
+<span id="para-6"></span>
 <p>
 As soon as we include in our language procedures we must admit that a single
 textual index is no longer sufficient.
@@ -673,7 +673,7 @@ the call stack.
  <tr>
   <td colspan="2" bgcolor="#F0F8FF">
 <font color="#0000B0" face="times,times roman,serif" size="+1">
-<a name="para-7"></a>
+<span id="para-7"></span>
 <p>
 Let us now consider repetition clauses (like,
 <b>while</b>&nbsp;<i>B</i>&nbsp;<b>repeat</b>&nbsp;<i>A</i> or
@@ -766,7 +766,7 @@ This is a more correct variation of the more famous definition:
  <tr>
   <td colspan="2" bgcolor="#F0F8FF">
 <font color="#0000B0" face="times,times roman,serif" size="+1">
-<a name="para-7b"></a>
+<span id="para-7b"></span>
 <p>
 With the inclusion of the repetition clauses textual indices are no longer
 sufficient to describe the dynamic progress of the process.
@@ -815,7 +815,7 @@ an executing program.
  <tr>
   <td colspan="2" bgcolor="#F0F8FF">
 <font color="#0000B0" face="times,times roman,serif" size="+1">
-<a name="para-8"></a>
+<span id="para-8"></span>
 <p>
 The main point is that the values of these indices are outside
 the <!-- Note: "the" was not present in the original document -->
@@ -851,7 +851,7 @@ simply call the <i>state</i> or <i>execution history</i> of the program.
  <tr>
   <td colspan="2" bgcolor="#F0F8FF">
 <font color="#0000B0" face="times,times roman,serif" size="+1">
-<a name="para-9"></a>
+<span id="para-9"></span>
 <p>
 Why do we need such independent coordinates?
 The reason is - and this seems to be inherent to sequential processes - that we
@@ -922,7 +922,7 @@ contains its old value instead of its new value.
  <tr>
   <td colspan="2" bgcolor="#F0F8FF">
 <font color="#0000B0" face="times,times roman,serif" size="+1">
-<a name="para-10"></a>
+<span id="para-10"></span>
 <p>
 The unbridled use of the <b>go&nbsp;to</b> statement has an immediate
 consequence that it becomes terribly hard to find a meaningful set of
@@ -1000,7 +1000,7 @@ difficulty to determine its true value from the execution history.
  <tr>
   <td colspan="2" bgcolor="#F0F8FF">
 <font color="#0000B0" face="times,times roman,serif" size="+1">
-<a name="para-11"></a>
+<span id="para-11"></span>
 <p>
 The <b>go&nbsp;to</b> statement as it stands is just too primitive; it is too
 much an invitation to make a mess of one's program.
@@ -1076,7 +1076,7 @@ allocated resources will be properly released.
  <tr>
   <td colspan="2" bgcolor="#F0F8FF">
 <font color="#0000B0" face="times,times roman,serif" size="+1">
-<a name="para-12"></a>
+<span id="para-12"></span>
 <p>
 It is hard to end this with a fair acknowledgment.
 Am&nbsp;I to judge by whom my thinking has been influenced?
@@ -1116,7 +1116,7 @@ structures.
  <tr>
   <td colspan="2" bgcolor="#F0F8FF">
 <font color="#0000B0" face="times,times roman,serif" size="+1">
-<a name="para-13"></a>
+<span id="para-13"></span>
 <p>
 The remark about the undesirability of the <b>go&nbsp;to</b> statement is far
 from new.
@@ -1166,7 +1166,7 @@ the clumsy use of multiple <b>if</b>s, <b>goto</b>s, and labels.
  <tr>
   <td colspan="2" bgcolor="#F0F8FF">
 <font color="#0000B0" face="times,times roman,serif" size="+1">
-<a name="para-14"></a>
+<span id="para-14"></span>
 <p>
 In [<a href="#BOHM66">2</a>] Guiseppe Jacopini seems to have proved the
 (logical) superfluousness of the <b>go&nbsp;to</b> statement.
@@ -1220,20 +1220,20 @@ be <i>harmful</i>, but not <i>lethal</i>, and certainly not <i>useless</i>.
  <tr>
   <td colspan="2" bgcolor="#F0F8FF">
 <font color="#0000B0" face="times,times roman,serif" size="+1">
-<a name="Dijkstra-references"></a>
+<span id="Dijkstra-references"></span>
 <h3>References:</h3>
 
 <p></p>
 <ol type="1">
  <li> <!-- 1. -->
-  <a name="WIRTH66"></a>
+  <span id="WIRTH66"></span>
   Wirth, Niklaus, and Hoare C.&nbsp;A.&nbsp;R. <br>
   A contribution to the development of ALGOL. <br>
   <i>Comm. ACM 9</i> (June 1966), 413-432.
 
  <p>
  <li> <!-- 2. -->
-  <a name="BOHM66"></a>
+  <span id="BOHM66"></span>
   B&#246;hm, Corrado, and Jacopini Guiseppe. <br>
   Flow diagrams, Turing machines and languages with only two formation rules.
   <br>
@@ -1241,7 +1241,7 @@ be <i>harmful</i>, but not <i>lethal</i>, and certainly not <i>useless</i>.
  </p>
 </ol>
 
-<a name="signed"></a>
+<span id="signed"></span>
 <p>
 Edsger W. Dijkstra <br>
 <i>Technological University <br>
@@ -1261,10 +1261,10 @@ Eindhoven, The Netherlands</i>
 <!-- ----------------------------------------------------------------------- -->
 <hr></hr>
 
-<a name="part-2"></a>
+<span id="part-2"></span>
 <h1 align="center"> Part II </h1>
 
-<a name="structured-programming"></a>
+<span id="structured-programming"></span>
 <h2> Structured Programming </h2>
 
 <p>
@@ -1319,7 +1319,7 @@ language.)
 <!-- ------------------------------- -->
 <hr width="50%"></hr>
 
-<a name="if-then-else"></a>
+<span id="if-then-else"></span>
 <h3> if-then-else </h3>
 
 <p>
@@ -1487,7 +1487,7 @@ in a multiple <b>if-then</b> sequence
 <!-- ------------------------------- -->
 <hr width="50%"></hr>
 
-<a name="select"></a>
+<span id="select"></span>
 <h3> select </h3>
 
 <p>
@@ -1585,7 +1585,7 @@ difficult programming situations.
 <!-- ------------------------------- -->
 <hr width="50%"></hr>
 
-<a name="do-while"></a>
+<span id="do-while"></span>
 <h3> do-while </h3>
 
 <p>
@@ -1732,7 +1732,7 @@ Example <a href="#example-n-1">N-1</a> below.)
 <!-- ------------------------------- -->
 <hr width="50%"></hr>
 
-<a name="for-loop"></a>
+<span id="for-loop"></span>
 <h3> for-loop </h3>
 
 <p>
@@ -1943,7 +1943,7 @@ nextloop:
 <!-- ------------------------------- -->
 <hr width="50%"></hr>
 
-<a name="other-languages"></a>
+<span id="other-languages"></span>
 <h2> Other Approaches </h2>
 
 <p>
@@ -1982,10 +1982,10 @@ extremely flexible non-homogeneous data types.
 <!-- ----------------------------------------------------------------------- -->
 <hr></hr>
 
-<a name="part-3"></a>
+<span id="part-3"></span>
 <h1 align="center"> Part III </h1>
 
-<a name="is-goto-necessary"></a>
+<span id="is-goto-necessary"></span>
 <h2> Is Goto Still Necessary? </h2>
 
 <p>
@@ -2013,7 +2013,7 @@ sufficiently advanced to handle them without using goto.
 <!-- ------------------------------- -->
 <hr width="50%></hr>
 
-<a name="loop-exits"></a>
+<span id="loop-exits"></span>
 <h3> Loop Exits </h3>
 
 <p>
@@ -2032,7 +2032,7 @@ C&nbsp;provides simple loop escape mechanisms, i.e., the <b>break</b> and
 <b>continue</b> statements.
 </p>
 
-<a name="example-l-1"></a>
+<span id="example-l-1"></span>
 <p></p>
 <table rows="1" cols="1" bgcolor="#E0FFE0" width="80%" align="center">
  <tr>
@@ -2068,7 +2068,7 @@ at the top of each loop.
 </p>
 
 <!-- ------------------------------- -->
-<a name="example-l-2"></a>
+<span id="example-l-2"></span>
 <p></p>
 <table rows="1" cols="1" bgcolor="#E0FFE0" width="80%" align="center">
  <tr>
@@ -2105,7 +2105,7 @@ that are prefixed with label names.
 </p>
 
 <!-- ------------------------------- -->
-<a name="example-n-1"></a>
+<span id="example-n-1"></span>
 <p></p>
 <table rows="1" cols="1" bgcolor="#E0FFE0" width="80%" align="center">
  <tr>
@@ -2151,7 +2151,7 @@ one level of loop nesting, so goto statements must be employed.
 </p>
 
 <!-- ------------------------------- -->
-<a name="example-n-2"></a>
+<span id="example-n-2"></span>
 <p></p>
 <table rows="1" cols="1" bgcolor="#E0FFE0" width="80%" align="center">
  <tr>
@@ -2203,7 +2203,7 @@ Example <a href="#example-l-2">L-2</a>.
 </p>
 
 <!-- ------------------------------- -->
-<a name="example-n-3"></a>
+<span id="example-n-3"></span>
 <p></p>
 <table rows="1" cols="1" bgcolor="#E0FFE0" width="80%" align="center">
  <tr>
@@ -2249,8 +2249,8 @@ Example <a href="#example-l-2">L-2</a>.
 <!-- ------------------------------- -->
 <hr width="50%"></hr>
 
-<a name="discussion-3"></a>
-<a name="error-handling"></a>
+<span id="discussion-3"></span>
+<span id="error-handling"></span>
 <h3> Exception Handling </h3>
 
 <p>
@@ -2282,7 +2282,7 @@ Consider a procedure that performs four operations:
 The following example, written in C, does these operations:
 </p>
 
-<a name="example-e-1"></a>
+<span id="example-e-1"></span>
 <p>
 </p>
 <table rows="1" cols="1" bgcolor="#E0FFE0" width="80%" align="center">
@@ -2374,7 +2374,7 @@ If we apply Dijkstra's maxim and remove all of the gotos,
 we get something like the following.
 </p>
 
-<a name="example-e-2"></a>
+<span id="example-e-2"></span>
 <p></p>
 <table rows="1" cols="1" bgcolor="#E0FFE0" width="80%" align="center">
  <tr>
@@ -2451,7 +2451,7 @@ This suggests an alternate style which also does not use gotos
 but avoids code duplication.
 </p>
 
-<a name="example-e-3"></a>
+<span id="example-e-3"></span>
 <p></p>
 <table rows="1" cols="1" bgcolor="#E0FFE0" width="80%" align="center">
  <tr>
@@ -2542,7 +2542,7 @@ exception handling mechanism (i.e., <b>try-catch</b> statements),
 which makes the error handling in the code more obvious:
 </p>
 
-<a name="example-t-1"></a>
+<span id="example-t-1"></span>
 <p></p>
 <table rows="1" cols="1" bgcolor="#E0FFE0" width="80%" align="center">
  <tr>
@@ -2627,7 +2627,7 @@ destructor allows us to write a simpler <b>catch</b> clause to handle
 failures.
 </p>
 
-<a name="example-t-2"></a>
+<span id="example-t-2"></span>
 <p></p>
 <table rows="1" cols="1" bgcolor="#E0FFE0" width="80%" align="center">
  <tr>
@@ -2685,7 +2685,7 @@ the <b>try</b> and <b>catch</b> clauses, which can be fairly expensive.
 </p>
 
 <!-- ------------------------------- -->
-<a name="finally-clause"></a>
+<span id="finally-clause"></span>
 <p>
 Some languages, such as Java, provide a <b>finally</b> clause as part
 of the <b>try-catch</b> statement to provide a way to
@@ -2693,7 +2693,7 @@ specify actions that must be taken regardless of whether or not an exception
 occurs.
 </p>
 
-<a name="example-t-3"></a>
+<span id="example-t-3"></span>
 <p></p>
 <table rows="1" cols="1" bgcolor="#E0FFE0" width="80%" align="center">
  <tr>
@@ -2731,7 +2731,7 @@ void write3(Resource dest, Item[] data)
 </table>
 
 <!-- ------------------------------- -->
-<a name="retry-clause"></a>
+<span id="retry-clause"></span>
 <p>
 Other languages, such as Eiffel, provide a <b>retry</b> statement as
 part of exception handling to allow a procedure body to be executed again after
@@ -2739,7 +2739,7 @@ an exception is caught, presumably after some corrective actions are performed.
 </p>
 
 <!-- +INCOMPLETE
-<a name="example-t-4"></a>
+<span id="example-t-4"></span>
 <p></p>
 <table rows="1" cols="1" bgcolor="#E0FFE0" width="80%" align="center">
  <tr>
@@ -2766,10 +2766,10 @@ method ...
 <!-- ----------------------------------------------------------------------- -->
 <hr></hr>
 
-<a name="conclusion"></a>
+<span id="conclusion"></span>
 <h1 align="center"> Conclusion </h1>
 
-<a name="the-tao-of-goto"></a>
+<span id="the-tao-of-goto"></span>
 <h2> The Tao of Goto </h2>
 
 <p>
@@ -2827,7 +2827,7 @@ and when not to use it for evil.
 <!-- ------------------------------- -->
 <hr width="50%"></hr>
 
-<a name="example-last"></a>
+<span id="example-last"></span>
 <p>
 In parting, I can't resist giving one last example of goto statements.
 I&nbsp;came across this code in an LR parser library I used as part of a larger
@@ -2879,12 +2879,12 @@ using goto statements.
 <!-- ----------------------------------------------------------------------- -->
 <hr></hr>
 
-<a name="references"></a>
+<span id="references"></span>
 <h2>References</h2>
 
 <p></p>
 <ol type="A">
- <a name="ref-gtch"></a>
+ <span id="ref-gtch"></span>
  <li>
   <b>Go To Considered Harmful</b> <br>
   Edsger W. Dijkstra <br>
@@ -2894,29 +2894,29 @@ using goto statements.
   <a href="http://www.acm.org/classics/oct95/">www.acm.org/classics/oct95</a>
 
  <p>
- <a name="ref-ewd"></a>
+ <span id="ref-ewd"></span>
  <li>
   Biography of <b>Edsger W. Dijkstra</b> <br>
   born May 1930, died Aug 2002 <br>
-  Wikipedia: 
+  Wikipedia:
   <a href="http://en.wikipedia.org/wiki/Dijkstra"
    >en.wikipedia.org/wiki/Dijkstra</a>
  </p>
 
  <p>
- <a name="ref-carh"></a>
+ <span id="ref-carh"></span>
  <li>
   Biography of <b>C.&nbsp;A.&nbsp;R. (Tony) Hoare</b> <br>
-  Wikipedia: 
+  Wikipedia:
   <a href="http://en.wikipedia.org/wiki/C._A._R._Hoare"
    >en.wikipedia.org/wiki/C._A._R._Hoare</a>
  </p>
 
  <p>
- <a name="ref-nw"></a>
+ <span id="ref-nw"></span>
  <li>
   Biography of <b>Niklaus Wirth</b> <br>
-  Wikipedia: 
+  Wikipedia:
   <a href="http://en.wikipedia.org/wiki/Wirth"
    >en.wikipedia.org/wiki/Wirth</a> <br>
   Home page:
@@ -2925,7 +2925,7 @@ using goto statements.
  </p>
 
  <p>
- <a name="ref-gs"></a>
+ <span id="ref-gs"></span>
  <li>
   <b>Goto</b> programming statement <br>
   Wikipedia:
@@ -2933,16 +2933,16 @@ using goto statements.
  </p>
 
  <p>
- <a name="ref-fv"></a>
+ <span id="ref-fv"></span>
  <li>
   <b>Formal Verification</b> <br>
-  Wikipedia: 
+  Wikipedia:
   <a href="http://en.wikipedia.org/wiki/Formal_verification"
    >en.wikipedia.org/wiki/Formal_verification</a>
  </p>
 
  <p>
- <a name="ref-pd"></a>
+ <span id="ref-pd"></span>
  <li>
   <b>Program Derivation</b> <br>
   Wikipedia:
@@ -2951,7 +2951,7 @@ using goto statements.
  </p>
 
  <p>
- <a name="ref-hl"></a>
+ <span id="ref-hl"></span>
  <li>
   <b>Hoare Logic</b> <br>
   Wikipedia:
@@ -2960,7 +2960,7 @@ using goto statements.
  </p>
 
  <p>
- <a name="ref-abcp"></a>
+ <span id="ref-abcp"></span>
  <li>
   <b>An Axiomatic Basis For Computer Programming</b> <br>
   C.&nbsp;A.&nbsp;R. (Tony) Hoare <br>
@@ -2972,7 +2972,7 @@ using goto statements.
  </p>
 
  <p>
- <a name="ref-pln"></a>
+ <span id="ref-pln"></span>
  <li>
   <b>Programming Language Newsgroups</b> <br>
   <a href="http://groups-beta.google.com/groups/dir?q=comp.lang"
@@ -2981,7 +2981,7 @@ using goto statements.
 
 <!-- DO NOT ADD (requires subscription)
  <p>
- <a name="ref-grg"></a>
+ <span id="ref-grg"></span>
  <li>
   <b>Getting Rid of goto</b> <br>
   Pete Becker <br>
@@ -2992,7 +2992,7 @@ using goto statements.
 
 <!-- DO NOT ADD (requires subscription)
  <p>
- <a name="ref-aslg"></a>
+ <span id="ref-aslg"></span>
  <li>
   <b>Another Slap at Lowly goto</b> <br>
   Aaron Garth Enright and Linda M. Wilkens <br>
@@ -3007,7 +3007,7 @@ using goto statements.
 <!-- ----------------------------------------------------------------------- -->
 <hr></hr>
 
-<a name="copyright"></a>
+<span id="copyright"></span>
 <p>
 <i>
 The original letter by Dijkstra quoted in this document is
@@ -3015,14 +3015,14 @@ Copyright &copy;1968 by the
 <a href="http://www.acm.org">Association for Computing Machinery</a> (ACM).
 <!--
 Direct quoting of the original text for purposes of criticism and analysis
-is covered by the "fair use" section (§107) of U.S. copyright law.
+is covered by the "fair use" section (ï¿½107) of U.S. copyright law.
 !-->
 All other text in this document is
 Copyright &copy;2005 by
 <a href="mailto:david@tribble.com">David R. Tribble</a>.
 </p>
 
-<a name="this-doc"></a>
+<span id="this-doc"></span>
 <p>
 This document is:
 <a href="http://david.tribble.com/text/goto.html"
