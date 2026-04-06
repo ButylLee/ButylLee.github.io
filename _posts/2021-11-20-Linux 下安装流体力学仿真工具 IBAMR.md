@@ -2,8 +2,13 @@
 title: Linux 下安装流体力学仿真工具 IBAMR
 description: Linux折腾记录
 date: 2021-11-20 20:46:00 +0800
-categories: [Linux]
-tags: [IBAMR]
+categories: [经验教程]
+tags: [Linux, IBAMR]
+copyright:
+image:
+math: false
+mermaid: false
+pin: false
 ---
 
 前几天有位学流体力学的朋友问我怎么安装 IBAMR，说是一个有限元分析的开源软件，无奈不太懂这方面的知识，不知道怎么折腾。我去 Github 一看，好嘛，原来还是个 Linux 下的软件，这下他更不会弄了，我想着正好顺便熟悉下 Linux，就答应帮他折腾下了。

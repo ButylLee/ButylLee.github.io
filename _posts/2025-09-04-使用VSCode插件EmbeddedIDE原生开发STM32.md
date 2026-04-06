@@ -2,8 +2,13 @@
 title: 使用VSCode插件EmbeddedIDE原生开发STM32
 description: 本文为STM32的开发环境搭建教程，使用VSCode与EmbeddedIDE插件，面向从零搭建框架的原生开发方式
 date: 2025-09-04 01:18:00 +0800
-categories: [嵌入式]
-tags: [STM32, VSCode, EmbeddedIDE]
+categories: [经验教程]
+tags: [嵌入式, STM32, VSCode, EmbeddedIDE]
+copyright:
+image:
+math: false
+mermaid: false
+pin: false
 ---
 
 ## 下载STM32软件包

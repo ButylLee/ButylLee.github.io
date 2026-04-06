@@ -2,8 +2,13 @@
 title: ScopeGuard原理介绍与实现
 description: 介绍由RAII引申出的通用类ScopeGuard
 date: 2021-05-13 23:37:00 +0800
-categories: [C++]
-tags: [ScopeGuard, RAII]
+categories: [编程随笔]
+tags: [C++, ScopeGuard, RAII]
+copyright:
+image:
+math: false
+mermaid: false
+pin: false
 ---
 
 先贴个完整代码的 Github 地址：[ScopeGuard](https://github.com/ButylLee/ScopeGuard)，欢迎Star。

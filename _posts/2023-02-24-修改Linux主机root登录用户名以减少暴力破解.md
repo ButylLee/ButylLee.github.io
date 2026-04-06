@@ -2,8 +2,13 @@
 title: 修改Linux主机root登录用户名以减少暴力破解
 description: ""
 date: 2023-02-24 14:10:00 +0800
-categories: [Linux]
-tags: []
+categories: [经验教程]
+tags: [Linux]
+copyright:
+image:
+math: false
+mermaid: false
+pin: false
 ---
 
 正常来说，Linux默认的最高管理员用户名都是root，服务器容易被暴力破解用户名，如果修改了root的用户名，则可以减少被暴力破解的几率，毕竟得先知道用户名才能登录（Linux尝试登录不存在的账户只会报密码错误）。
