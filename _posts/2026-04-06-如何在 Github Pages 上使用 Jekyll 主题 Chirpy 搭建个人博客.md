@@ -48,7 +48,7 @@ render_with_liquid: false
 
 ### 本地部署
 
-首先使用 [RubyInstaller]([Downloads](https://rubyinstaller.org/downloads/)) 安装 Ruby，下载页面中前面带箭头=>的版本。打开后可以更改安装目录，其他的选项不用动，安装后直接点完成，会打开一个安装 MSYS2 的命令行界面，这里三个选项都要安装。
+首先使用 [RubyInstaller](https://rubyinstaller.org/downloads/) 安装 Ruby，下载页面中前面带箭头=>的版本。打开后可以更改安装目录，其他的选项不用动，安装后直接点完成，会打开一个安装 MSYS2 的命令行界面，这里三个选项都要安装。
 
 接着打开命令行界面，输入 `gem -v`，若弹出版本号则安装成功。
 
