@@ -9,6 +9,7 @@ image:
 math: false
 mermaid: false
 pin: false
+render_with_liquid: false
 ---
 
 ## 背景
@@ -23,7 +24,7 @@ pin: false
 
 - [XAMPP 官方网站](https://www.apachefriends.org/zh_cn/index.html)
 
-安装好后会打开其管理界面，如果后续需要再次打开的话，需要用管理员权限打开 /opt/lampp/manager-linux-x64.run。
+安装好后会打开其管理界面，如果后续需要再次打开的话，需要用管理员权限打开 `/opt/lampp/manager-linux-x64.run`。
 
 在 WordPress 管理页面下载 All-in-one-wp-migration 插件，这个插件备份是免费的，还原如果文件超过一定大小则需要付费，或者自己 Hack 修改容量限制，这个 Hack 其实是作者故意留下的，但据我验证新的版本似乎已经无法手动解除限制了，网上的教程都太老，我用了多种方法依旧失败，最后在 [Github](https://github.com/dev071/all-in-one-wp-migration-unlimited) 上找到了插件的破解版本，才得以恢复。
 
