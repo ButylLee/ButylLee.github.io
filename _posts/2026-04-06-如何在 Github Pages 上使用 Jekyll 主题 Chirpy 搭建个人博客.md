@@ -212,6 +212,28 @@ plugins:
 
 最后如果要修改 404 页面提示词的话，需要修改 `_data/locales/zh-CN.yml` 中的 `not_found: statement:`。
 
+### 配置评论系统
+
+可在`_config.yml`的`comment`一项中配置，可选的评论系统有`disqus`、`utterances`、`giscus`，这里选择了`giscus`。
+
+首先在`_config.yml`中开启评论功能：
+
+```yaml
+comments:
+  # Global switch for the post-comment system. Keeping it empty means disabled.
+  provider: giscus # [disqus | utterances | giscus]
+```
+
+然后前往 [giscus app](https://giscus.app/zh-CN)，按教程操作：
+
+- 确保你的博客仓库公开
+- 安装 [giscus](https://github.com/apps/giscus)，建议只安装至你的博客仓库
+- 去到你的博客仓库的设置，在`Settings` - `General` - `Features`中勾选`Discussions`
+- 填入`用户名/仓库名`
+- 将生成的参数填入`_config.yml`中`giscus`的对应位置
+
+若要更详细地配置，可在博客仓库根目录创建配置文件`giscus.json`，参考[giscus Advanced Usage](https://github.com/giscus/giscus/blob/main/ADVANCED-USAGE.md)。
+
 ## 如何撰写文章
 
 Jekyll 是一个主要使用 Markdown 文件生成静态网页的框架，因此博客文章的撰写都是使用 Markdown 完成，[参考教程](https://chirpy.cotes.page/posts/write-a-new-post/#mermaid)。Markdown 撰写可以使用 VSCode + 插件或 Typora。
@@ -241,7 +263,7 @@ pin: false
 - `copyright`：单独指定文章版权信息时使用，默认时则为空，或者删除这个属性
 - `image`：文章的封面图片(1200*630最佳)，后面为图片的地址，不需要就留空或者删除这个属性
 - `math`：是否启用数学公式
-- `mermaid`：是否启用图标功能
+- `mermaid`：是否启用图表功能
 - `pin`：是否在主页置顶
 
 需要注意的是 Front Matter 中的 title 具有一级标题的作用，因此原先 Markdown 中的一级标题就可以删去。
