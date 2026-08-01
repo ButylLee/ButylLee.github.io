@@ -214,7 +214,7 @@ plugins:
 
 ## 如何撰写文章
 
-Jekyll 是一个主要使用 Markdown 文件生成静态网页的框架，因此博客文章的撰写都是使用 Markdown 完成，[参考教程](https://chirpy.cotes.page/posts/write-a-new-post/#mermaid)。
+Jekyll 是一个主要使用 Markdown 文件生成静态网页的框架，因此博客文章的撰写都是使用 Markdown 完成，[参考教程](https://chirpy.cotes.page/posts/write-a-new-post/#mermaid)。Markdown 撰写可以使用 VSCode + 插件或 Typora。
 
 Markdown 文件存放在 `_posts` 下，标题需要满足 `YYYY-MM-DD-TITLE.EXTENSION` 的格式，拓展名可以是 `.md` 或 `.markdown`。内容上与常规 Markdown 的主要区别就是多了一个 Front Matter 的头部块用于标注元信息，模板如下：
 
@@ -259,8 +259,18 @@ assets
    |- favicons
 ```
 
+完成文章撰写后，可先在本地仓库目录下命令行运行`bundle exec jekyll serve`，然后打开弹出的链接在本地浏览显示效果，确认无误后再提交至 Github。
+
 如果你对文章进行修改的话，你会发现博客文章开头会标注发布时间和修改时间，这个是通过什么做到的呢？
 
 首先发布时间是自己指定的，而修改时间是通过插件 `posts-lastmod-hook.rb` 在编译时通过 Git 历史信息检测得知的，如果文件有过修改那么就会显示修改时间。
 
 Jekyll 除了常规的 Markdown 还支持一些拓展，参考[这里](https://chirpy.cotes.page/posts/write-a-new-post/)。
+
+## 如何更新博客仓库模板
+
+对于使用 Github 模板仓库创建的博客，需要去[模板仓库](https://github.com/cotes2020/chirpy-starter)中对比更新内容，并将更新内容添加到自己的仓库中，这一步可以手动操作或使用 git 完成。主要更改是 Gemfile 中的内容，因为大部分的内容都在另一个资源仓库中。
+
+然后在仓库目录下打开命令行，执行`bundle update jekyll-theme-chirpy`，完成后再运行`bundle exec jekyll serve`查看有无问题，另外可以通过`bundle exec jekyll clean`清理生成的缓存文件。
+
+如果还从官方仓库中复制了文件用于自定义，如`_data`或`_layouts`中的文件，那只需再手动更新一下对应的文件即可。
