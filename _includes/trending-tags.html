@@ -6,11 +6,15 @@
 {% assign tag_list = '' | split: '' %}
 
 {% for tag in site.tags %}
-  {% assign size = tag | last | size %}
-  {% assign size_list = size_list | push: size %}
+  {% assign posts = tag | last %}
+  {% assign visible_posts = posts | where_exp: "post", "post.hidden != true" %}
+  {% assign size = visible_posts | size %}
 
-  {% assign tag_str = tag | first | append: '::' | append: size %}
-  {% assign tag_list = tag_list | push: tag_str %}
+  {% if size > 0 %}
+    {% assign size_list = size_list | push: size %}
+    {% assign tag_str = tag | first | append: '::' | append: size %}
+    {% assign tag_list = tag_list | push: tag_str %}
+  {% endif %}
 {% endfor %}
 
 {% assign size_list = size_list | sort | reverse %}
