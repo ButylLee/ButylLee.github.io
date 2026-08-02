@@ -14,7 +14,13 @@ layout: page
 
 {% for category in sort_categories %}
   {% assign category_name = category | first %}
-  {% assign posts_of_category = category | last %}
+  {% assign all_posts = category | last %}
+  {% assign posts_of_category = all_posts | where_exp: "post", "post.hidden != true" %}
+
+  {% if posts_of_category.size == 0 %}
+    {% continue %}
+  {% endif %}
+
   {% assign first_post = posts_of_category | first %}
 
   {% if category_name == first_post.categories[0] %}
@@ -45,7 +51,7 @@ layout: page
           <a href="{{ _category_url | relative_url }}" class="mx-2">{{ category_name }}</a>
 
           <!-- content count -->
-          {% assign top_posts_size = site.categories[category_name] | size %}
+          {% assign top_posts_size = posts_of_category | size %}
           <span class="text-muted small font-weight-light">
             {% if sub_categories_size > 0 %}
               {{ sub_categories_size }}
@@ -109,7 +115,7 @@ layout: page
                 {% capture _sub_ctg_url %}/categories/{{ sub_category | slugify | url_encode }}/{% endcapture %}
                 <a href="{{ _sub_ctg_url | relative_url }}" class="mx-2">{{ sub_category }}</a>
 
-                {% assign posts_size = site.categories[sub_category] | size %}
+                {% assign posts_size = posts_of_category | size %}
                 <span class="text-muted small font-weight-light">
                   {{ posts_size }}
 
